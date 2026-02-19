@@ -49,6 +49,35 @@ export function querySnowflake(
 }
 
 /**
+ * Creates a per-request Snowflake connection authenticated via key-pair (RSA private key).
+ * Used for local development — requires SNOWFLAKE_PRIVATE_KEY_PATH env var.
+ * No connection pooling.
+ */
+export function createKeyPairConnection(
+  username: string
+): Promise<snowflake.Connection> {
+  const connection = snowflake.createConnection({
+    account: process.env.SNOWFLAKE_ACCOUNT!,
+    username,
+    authenticator: "SNOWFLAKE_JWT",
+    privateKeyPath: process.env.SNOWFLAKE_PRIVATE_KEY_PATH!,
+    ...(process.env.SNOWFLAKE_PRIVATE_KEY_PASSPHRASE && {
+      privateKeyPassphrase: process.env.SNOWFLAKE_PRIVATE_KEY_PASSPHRASE,
+    }),
+  });
+
+  return new Promise((resolve, reject) => {
+    connection.connect((err, conn) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(conn);
+      }
+    });
+  });
+}
+
+/**
  * Destroys a Snowflake connection. Fire-and-forget — errors are silently ignored.
  */
 export function destroyConnection(connection: snowflake.Connection): void {

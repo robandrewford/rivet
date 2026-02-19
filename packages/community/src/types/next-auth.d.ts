@@ -8,6 +8,7 @@ declare module "@auth/core/jwt" {
     permissionTier?: "standard" | "elevated";
     error?: "RefreshTokenError";
     snowflake_token?: string;
+    devAuth?: boolean;
   }
 }
 
