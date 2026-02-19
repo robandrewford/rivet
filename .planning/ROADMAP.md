@@ -24,13 +24,12 @@ Decimal phases appear between their surrounding integers in numeric order.
 ### Phase 1: Auth + Session
 **Goal**: Users can only access the application via Microsoft SSO, their Snowflake session is scoped to their own credentials, and their permission tier is determined
 **Depends on**: Nothing (first phase)
-**Requirements**: AUTH-01, AUTH-02, AUTH-03, AUTH-04, AUTH-05, AUTH-06
+**Requirements**: AUTH-01, AUTH-02, AUTH-03, AUTH-04 (AUTH-05, AUTH-06 deferred to Phase 5 where the download UI exists)
 **Success Criteria** (what must be TRUE):
   1. Navigating to the application redirects to Microsoft SSO; no application UI renders until authentication completes
-  2. After login, the system resolves the user's permission tier (standard or elevated) from their Snowflake role
+  2. After login, the system resolves the user's permission tier (standard or elevated) from their Snowflake role and caches it in session.permissionTier
   3. All subsequent Snowflake queries execute under the authenticated user's own credentials, not a service account
-  4. When SSO session expires mid-workflow, the user is prompted to re-authenticate and returns to their exact prior state with no data loss
-  5. Elevated users can download artifact JSON; standard users cannot
+  4. When SSO session expires mid-workflow, the user is prompted to re-authenticate and returns to their exact prior URL (full workflow state restoration deferred to Phase 2+ when workflow UI exists)
 **Plans:** 3 plans in 3 waves (sequential)
 
 Plans:
@@ -98,13 +97,14 @@ Plans:
 ### Phase 5: Persistence + Sharing
 **Goal**: Users can save MSA workflows to S3, share them with any authenticated colleague, fork them, re-run them against live data, compare versions, and download artifacts based on their permission tier
 **Depends on**: Phase 4
-**Requirements**: STORAGE-01, STORAGE-02, STORAGE-03, STORAGE-04, STORAGE-05, STORAGE-06, STORAGE-07, REPRO-01
+**Requirements**: STORAGE-01, STORAGE-02, STORAGE-03, STORAGE-04, STORAGE-05, STORAGE-06, STORAGE-07, REPRO-01, AUTH-05, AUTH-06
 **Success Criteria** (what must be TRUE):
   1. Saving an MSA writes a JSON artifact to S3 containing the full DAG structure, confirmed questions, SQL as executed (user edits flagged), Claude narratives, node states, model tiers, and artifact metadata — no result data
   2. Any authenticated org user can open a shared workflow link, view the DAG, and re-run it against their own Snowflake session and current live data
   3. Forking creates a new independent artifact owned by the forking user; changes to the fork do not affect the original
   4. Two executions of the same artifact under identical Snowflake state produce identical SQL and result structure; narrative phrasing may vary
   5. The diff view shows structural changes between artifact versions (nodes added/removed/modified, SQL changes, question changes) with no result data
+  6. Elevated users (session.permissionTier === "elevated") can download artifact JSON; standard users cannot (AUTH-05/AUTH-06 enforcement at the download surface)
 **Plans**: TBD
 
 Plans:
