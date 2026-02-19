@@ -122,76 +122,76 @@
 
 ## Traceability
 
-*Populated during roadmap creation.*
+*Populated: 2026-02-18 (roadmap created)*
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUTH-01 | — | Pending |
-| AUTH-02 | — | Pending |
-| AUTH-03 | — | Pending |
-| AUTH-04 | — | Pending |
-| AUTH-05 | — | Pending |
-| AUTH-06 | — | Pending |
-| SSA-01 | — | Pending |
-| SSA-02 | — | Pending |
-| SSA-03 | — | Pending |
-| SSA-04 | — | Pending |
-| SSA-05 | — | Pending |
-| SSA-06 | — | Pending |
-| SSA-07 | — | Pending |
-| SSA-08 | — | Pending |
-| SSA-09 | — | Pending |
-| SSA-10 | — | Pending |
-| SSA-11 | — | Pending |
-| SSA-12 | — | Pending |
-| SSA-13 | — | Pending |
-| SSA-14 | — | Pending |
-| SSA-15 | — | Pending |
-| SSA-16 | — | Pending |
-| SSA-17 | — | Pending |
-| SSA-18 | — | Pending |
-| MSA-01 | — | Pending |
-| MSA-02 | — | Pending |
-| MSA-03 | — | Pending |
-| MSA-04 | — | Pending |
-| MSA-05 | — | Pending |
-| MSA-06 | — | Pending |
-| MSA-07 | — | Pending |
-| MSA-08 | — | Pending |
-| MSA-09 | — | Pending |
-| MSA-10 | — | Pending |
-| FRAMEWORK-01 | — | Pending |
-| FRAMEWORK-02 | — | Pending |
-| FRAMEWORK-03 | — | Pending |
-| FRAMEWORK-04 | — | Pending |
-| PALETTE-01 | — | Pending |
-| PALETTE-02 | — | Pending |
-| PALETTE-03 | — | Pending |
-| STORAGE-01 | — | Pending |
-| STORAGE-02 | — | Pending |
-| STORAGE-03 | — | Pending |
-| STORAGE-04 | — | Pending |
-| STORAGE-05 | — | Pending |
-| STORAGE-06 | — | Pending |
-| STORAGE-07 | — | Pending |
-| SCHEMA-01 | — | Pending |
-| SCHEMA-02 | — | Pending |
-| SCHEMA-03 | — | Pending |
-| SCHEMA-04 | — | Pending |
-| SCHEMA-05 | — | Pending |
-| ESCALATION-01 | — | Pending |
-| ESCALATION-02 | — | Pending |
-| ESCALATION-03 | — | Pending |
-| ESCALATION-04 | — | Pending |
-| AUDIT-01 | — | Pending |
-| AUDIT-02 | — | Pending |
-| REPRO-01 | — | Pending |
+| AUTH-01 | Phase 1 | Pending |
+| AUTH-02 | Phase 1 | Pending |
+| AUTH-03 | Phase 1 | Pending |
+| AUTH-04 | Phase 1 | Pending |
+| AUTH-05 | Phase 1 | Pending |
+| AUTH-06 | Phase 1 | Pending |
+| SSA-01 | Phase 2 | Pending |
+| SSA-02 | Phase 2 | Pending |
+| SSA-03 | Phase 2 | Pending |
+| SSA-04 | Phase 2 | Pending |
+| SSA-05 | Phase 2 | Pending |
+| SSA-07 | Phase 2 | Pending |
+| SSA-08 | Phase 2 | Pending |
+| SSA-09 | Phase 2 | Pending |
+| SSA-10 | Phase 2 | Pending |
+| SSA-11 | Phase 2 | Pending |
+| SSA-12 | Phase 2 | Pending |
+| SSA-13 | Phase 2 | Pending |
+| SSA-06 | Phase 3 | Pending |
+| SSA-14 | Phase 3 | Pending |
+| SSA-15 | Phase 3 | Pending |
+| SSA-16 | Phase 3 | Pending |
+| SSA-17 | Phase 3 | Pending |
+| SSA-18 | Phase 3 | Pending |
+| FRAMEWORK-01 | Phase 3 | Pending |
+| FRAMEWORK-02 | Phase 3 | Pending |
+| FRAMEWORK-03 | Phase 3 | Pending |
+| FRAMEWORK-04 | Phase 3 | Pending |
+| PALETTE-01 | Phase 3 | Pending |
+| PALETTE-02 | Phase 3 | Pending |
+| PALETTE-03 | Phase 3 | Pending |
+| MSA-01 | Phase 4 | Pending |
+| MSA-02 | Phase 4 | Pending |
+| MSA-03 | Phase 4 | Pending |
+| MSA-04 | Phase 4 | Pending |
+| MSA-05 | Phase 4 | Pending |
+| MSA-06 | Phase 4 | Pending |
+| MSA-07 | Phase 4 | Pending |
+| MSA-08 | Phase 4 | Pending |
+| MSA-09 | Phase 4 | Pending |
+| MSA-10 | Phase 4 | Pending |
+| STORAGE-01 | Phase 5 | Pending |
+| STORAGE-02 | Phase 5 | Pending |
+| STORAGE-03 | Phase 5 | Pending |
+| STORAGE-04 | Phase 5 | Pending |
+| STORAGE-05 | Phase 5 | Pending |
+| STORAGE-06 | Phase 5 | Pending |
+| STORAGE-07 | Phase 5 | Pending |
+| REPRO-01 | Phase 5 | Pending |
+| SCHEMA-01 | Phase 6 | Pending |
+| SCHEMA-02 | Phase 6 | Pending |
+| SCHEMA-03 | Phase 6 | Pending |
+| SCHEMA-04 | Phase 6 | Pending |
+| SCHEMA-05 | Phase 6 | Pending |
+| ESCALATION-01 | Phase 6 | Pending |
+| ESCALATION-02 | Phase 6 | Pending |
+| ESCALATION-03 | Phase 6 | Pending |
+| ESCALATION-04 | Phase 6 | Pending |
+| AUDIT-01 | Phase 6 | Pending |
+| AUDIT-02 | Phase 6 | Pending |
 
 **Coverage:**
-- v1 requirements: 55 total
-- Mapped to phases: 0 (roadmap pending)
-- Unmapped: 55 ⚠️
+- v1 requirements: 60 total (note: original count of 55 was incorrect; actual count is 60)
+- Mapped to phases: 60/60
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-18*
-*Last updated: 2026-02-18 after initial definition from SPEC.md v2.0*
+*Last updated: 2026-02-18 — traceability populated after roadmap creation*
