@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import AzureAD from "next-auth/providers/azure-ad";
 import type { UserId } from "@/lib/users";
+import { resolvePermissionTier } from "./permissions";
 
 // Note: MicrosoftEntraID is branded as AzureAD in next-auth@5.0.0-beta.3.
 // The provider was renamed to microsoft-entra-id in later beta versions.
@@ -10,6 +11,15 @@ const { handlers, auth, signIn, signOut } = NextAuth({
       clientId: process.env.AUTH_MICROSOFT_ENTRA_ID_ID!,
       clientSecret: process.env.AUTH_MICROSOFT_ENTRA_ID_SECRET!,
       issuer: process.env.AUTH_MICROSOFT_ENTRA_ID_ISSUER,
+      // If SNOWFLAKE_OAUTH_SCOPE is set, access_token targets Snowflake directly.
+      // See 01-RESEARCH.md Open Question 3 for OBO fallback.
+      authorization: {
+        params: {
+          scope: ["openid", "profile", "email", "offline_access", process.env.SNOWFLAKE_OAUTH_SCOPE]
+            .filter(Boolean)
+            .join(" "),
+        },
+      },
     }),
   ],
   session: {
@@ -21,7 +31,7 @@ const { handlers, auth, signIn, signOut } = NextAuth({
         token.access_token = (account.access_token ?? "") as string;
         token.expires_at = (account.expires_at ?? 0) as number;
         token.refresh_token = account.refresh_token as string | undefined;
-        token.permissionTier = "standard";
+        token.permissionTier = await resolvePermissionTier(account.access_token!);
       }
 
       const nowSeconds = Math.floor(Date.now() / 1000);
