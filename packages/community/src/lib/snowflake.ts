@@ -64,6 +64,9 @@ export function createKeyPairConnection(
     ...(process.env.SNOWFLAKE_PRIVATE_KEY_PASSPHRASE && {
       privateKeyPassphrase: process.env.SNOWFLAKE_PRIVATE_KEY_PASSPHRASE,
     }),
+    ...(process.env.SNOWFLAKE_WAREHOUSE && { warehouse: process.env.SNOWFLAKE_WAREHOUSE }),
+    ...(process.env.SNOWFLAKE_DATABASE && { database: process.env.SNOWFLAKE_DATABASE }),
+    ...(process.env.SNOWFLAKE_SCHEMA && { schema: process.env.SNOWFLAKE_SCHEMA }),
   });
 
   return new Promise((resolve, reject) => {
