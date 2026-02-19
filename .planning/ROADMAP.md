@@ -31,12 +31,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. All subsequent Snowflake queries execute under the authenticated user's own credentials, not a service account
   4. When SSO session expires mid-workflow, the user is prompted to re-authenticate and returns to their exact prior state with no data loss
   5. Elevated users can download artifact JSON; standard users cannot
-**Plans**: TBD
+**Plans:** 3 plans in 3 waves (sequential)
 
 Plans:
-- [ ] 01-01: Microsoft SSO integration (OAuth/OIDC flow, app-level auth guard)
-- [ ] 01-02: Snowflake session establishment and permission tier resolution
-- [ ] 01-03: Session expiry handling and state preservation
+- [ ] 01-01-PLAN.md — Microsoft SSO integration: MicrosoftEntraID provider, JWT session strategy, auth guard middleware (Wave 1)
+- [ ] 01-02-PLAN.md — Snowflake session + permission tier: OAuth connection factory, IS_ROLE_IN_SESSION resolution, JWT caching (Wave 2)
+- [ ] 01-03-PLAN.md — Token refresh + state preservation: refresh rotation, session watchdog, sessionStorage checkpoint/restore (Wave 3)
 
 ### Phase 2: SSA Core
 **Goal**: A single SSA node can carry a user from a business question through clarification, SQL generation, Snowflake execution, Claude evaluation, and a validated result — end-to-end
